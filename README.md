@@ -2,8 +2,8 @@
 <br/>
 
 <p align="center">
-    <img alt="awesome" src="react-brands.svg"/>
+    <img alt="awesome" src="react-brands.svg" height="150"/>
 </p>
 <br/>
-<h1 align="center">Learning React-Native by building different types of Apps</h1>
+<p align="center">Learning React-Native by building different types of Apps</p>
 <br/>
