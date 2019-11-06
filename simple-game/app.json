@@ -25,6 +25,12 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.pabon.guessinggame",
+      "versionCode": 1,
+      "permissions": [],
+      "icon": "./assets/icon.png"
     }
   }
 }
