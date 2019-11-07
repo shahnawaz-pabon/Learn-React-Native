@@ -13,12 +13,12 @@ import {
   Text
 } from 'react-native';
 
-// import Travel from './src/navigation/Travel';
+import Travel from './src/navigation/Travel';
 
-// import { createAppContainer } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   render(){
     return(
@@ -30,7 +30,7 @@ export default class App extends React.Component {
 
 }
 
-// export default createAppContainer(App);
+export default createAppContainer(Travel);
 
 const styles = StyleSheet.create({
   container: {
