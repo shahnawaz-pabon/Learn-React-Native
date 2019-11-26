@@ -9,7 +9,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-          <Text>Home Screen</Text>
+          <Text style={styles.text}>Home Screen</Text>
         </View>
     );
   }
@@ -19,7 +19,7 @@ class ProfileScreen extends React.Component {
   render() {
     return (
         <View style={styles.container}>
-          <Text>Profile Screen</Text>
+          <Text style={styles.text}>Profile Screen</Text>
         </View>
     );
   }
@@ -29,7 +29,7 @@ class ImageScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Image Screen</Text>
+                <Text style={styles.text}>Image Screen</Text>
             </View>
         );
     }
@@ -39,18 +39,25 @@ class CartScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Cart Screen</Text>
+                <Text style={styles.text}>Cart Screen</Text>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
+  container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+  text: {
+    fontSize: 30,
+    fontFamily: 'Ubuntu-Bold'
+  },
+  iconLabel: {
+    fontFamily: 'Ubuntu-Bold'
+  }
 });
 
 const TabNavigator = createMaterialBottomTabNavigator(
@@ -58,7 +65,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions:{
-        tabBarLabel:'Home',
+        tabBarLabel:<Text style={styles.iconLabel}>Home</Text>,
         tabBarIcon: ({ tintColor }) => (
             <View>
                 <Icon style={[{color: tintColor}]} size={25} name={'ios-home'}/>
@@ -68,7 +75,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Profile: {
       screen: ProfileScreen,
       navigationOptions:{
-          tabBarLabel:'Profile',
+          tabBarLabel:<Text style={styles.iconLabel}>Profile</Text>,
           tabBarIcon: ({ tintColor }) => (
               <View>
                   <Icon style={[{color: tintColor}]} size={25} name={'ios-person'}/>
@@ -81,7 +88,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Image: {
       screen: ImageScreen,
       navigationOptions:{
-        tabBarLabel:'History',
+        tabBarLabel:<Text style={styles.iconLabel}>History</Text>,
         tabBarIcon: ({ tintColor }) => (
             <View>
                 <Icon style={[{color: tintColor}]} size={25} name={'ios-images'}/>
@@ -94,7 +101,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     Cart: {
       screen: CartScreen,
       navigationOptions:{
-        tabBarLabel:'Cart',
+        tabBarLabel: <Text style={styles.iconLabel}>Cart</Text>,
         tabBarIcon: ({ tintColor }) => (
             <View>
                 <Icon style={[{color: tintColor}]} size={25} name={'ios-cart'}/>
@@ -108,7 +115,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     initialRouteName: "Home",
     activeColor: '#f0edf6',
     inactiveColor: '#7f8c8d',
-    barStyle: { backgroundColor: '#2c3e50' },
+    barStyle: { backgroundColor: '#2c3e50', fontFamily: 'Ubuntu-Bold' },
   },
 );
 
