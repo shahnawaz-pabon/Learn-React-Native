@@ -35,7 +35,7 @@ class MyHomeScreen extends React.Component {
     render() {
         return (
             <Button
-                onPress={() => 
+                onPress={() =>
                     // this.props.navigation.navigate('Notifications')
                     this.props.navigation.toggleDrawer()
                 }
@@ -59,7 +59,7 @@ class MyNotificationsScreen extends React.Component {
     render() {
         return (
             <Button
-                onPress={() => 
+                onPress={() =>
                     // this.props.navigation.goBack()
                     this.props.navigation.toggleDrawer()
                 }
@@ -75,7 +75,10 @@ const MyDrawerNavigator = createDrawerNavigator({
     },
     Notifications: {
         screen: MyNotificationsScreen,
+
     },
+}, {
+    drawerType: 'slide',
 });
 
 export default createAppContainer(MyDrawerNavigator);
