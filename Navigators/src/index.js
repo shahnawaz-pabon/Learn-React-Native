@@ -17,6 +17,10 @@ import {
     Button
 } from 'react-native';
 
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
+
+// createMaterialTopTabNavigator(RouteConfigs, TabNavigatorConfig);
+
 import { createAppContainer } from 'react-navigation';
 
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -69,6 +73,61 @@ class MyNotificationsScreen extends React.Component {
     }
 }
 
+class TopTabOne extends React.Component {
+
+    render() {
+        return (
+            <View>
+                <Text>Top Tab One</Text>
+            </View>
+        );
+    }
+}
+
+class TopTabTwo extends React.Component {
+
+    render() {
+        return (
+            <View>
+                <Text>Top Tab Two</Text>
+            </View>
+        );
+    }
+}
+
+class TopTabThree extends React.Component {
+
+    render() {
+        return (
+            <View>
+                <Text>Top Tab Three</Text>
+            </View>
+        );
+    }
+}
+
+const topTabs = createMaterialTopTabNavigator({
+    TopTabOne: {
+        screen: TopTabOne,
+        //   navigationOptions:{
+        //     tabBarIcon: ({ focused, tintcolor }) => (
+        //       <Icon name="ios-home" size={24}  />
+        //     )
+        //   }
+    },
+    TopTabTwo: {
+        screen: TopTabTwo,
+        //   navigationOptions:{
+        //     tabBarIcon: ({ tintcolor }) => (
+        //       <Icon name="ios-mail" size={24} />
+        //     )
+        //   }
+    },
+    TopTabThree: {
+        screen: TopTabThree
+    }
+});
+
 const MyDrawerNavigator = createDrawerNavigator({
     Home: {
         screen: MyHomeScreen,
@@ -77,6 +136,9 @@ const MyDrawerNavigator = createDrawerNavigator({
         screen: MyNotificationsScreen,
 
     },
+    TopTabs: {
+        screen: topTabs
+    }
 }, {
     drawerType: 'slide',
 });
