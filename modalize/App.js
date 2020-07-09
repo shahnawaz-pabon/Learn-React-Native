@@ -1,114 +1,70 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, { useRef, useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Modalize } from 'react-native-modalize';
+import faker from 'faker';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+export const App = () => {
+  const modalizeRef = useRef(null);
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const handleClose = dest => {
+    if (modalizeRef.current) {
+      modalizeRef.current.close(dest);
+    }
+  };
 
-const App: () => React$Node = () => {
+  const renderContent = () => (
+    <View style={s.content}>
+      <Text style={s.content__subheading}>{'Introduction'.toUpperCase()}</Text>
+      <Text style={s.content__heading}>Always open modal!</Text>
+      <Text style={s.content__description}>{faker.lorem.paragraph()}</Text>
+    </View>
+  );
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <Modalize
+      ref={modalizeRef}
+      modalStyle={s.content__modal}
+      alwaysOpen={85}
+      handlePosition="inside"
+    >
+      {renderContent()}
+    </Modalize>
   );
 };
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const s = StyleSheet.create({
+  content: {
+    padding: 20,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+
+  content__modal: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.45,
+    shadowRadius: 16,
   },
-  body: {
-    backgroundColor: Colors.white,
+
+  content__subheading: {
+    marginBottom: 2,
+
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#ccc',
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
+
+  content__heading: {
     fontSize: 24,
     fontWeight: '600',
-    color: Colors.black,
+    color: '#333',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+
+  content__description: {
+    paddingTop: 10,
+    paddingBottom: 10,
+
+    fontSize: 15,
+    fontWeight: '200',
+    lineHeight: 22,
+    color: '#666',
   },
 });
-
-export default App;
