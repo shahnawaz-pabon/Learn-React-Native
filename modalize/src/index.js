@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import { Modalize } from 'react-native-modalize';
+
+import AutoHeightWebView from 'react-native-autoheight-webview'
+
 import faker from 'faker';
 
 export const App = () => {
@@ -28,9 +31,28 @@ export const App = () => {
 
   const renderContent = () => (
     <View style={s.content}>
-      <Text style={s.content__heading}>Article title</Text>
-      <Text style={s.content__subheading}>November 11st 2018</Text>
-      <Text style={s.content__paragraph}>{faker.lorem.paragraphs(10)}</Text>
+      <Text style={s.content__heading}>GitHub</Text>
+      <AutoHeightWebView
+        style={{ width: '100%', marginTop: 35 }}
+        customScript={`document.body.style.background = 'lightyellow';`}
+        customStyle={`
+        * {
+          font-family: 'Times New Roman';
+        }
+        p {
+          font-size: 16px;
+        }
+      `}
+        files={[{
+          href: 'cssfileaddress',
+          type: 'text/css',
+          rel: 'stylesheet'
+        }]}
+        source={{ uri: 'https://github.com/jeremybarbet/react-native-modalize' }}
+        startInLoadingState={true}
+        scalesPageToFit={true}
+        viewportContent={'width=device-width, user-scalable=no'}
+      />
     </View>
   );
 
@@ -41,7 +63,7 @@ export const App = () => {
       modalStyle={s.content__modal}
       alwaysOpen={85}
       handlePosition="outside"
-      handleStyle={{ backgroundColor: '#2c3e50'}}
+      handleStyle={{ backgroundColor: '#2c3e50' }}
     >
       {renderContent()}
     </Modalize>
@@ -71,23 +93,9 @@ const s = StyleSheet.create({
 
   content__heading: {
     marginBottom: 2,
-
+    textAlign: "center",
     fontSize: 24,
     fontWeight: '600',
     color: '#333',
-  },
-
-  content__subheading: {
-    marginBottom: 20,
-
-    fontSize: 16,
-    color: '#ccc',
-  },
-
-  content__paragraph: {
-    fontSize: 15,
-    fontWeight: '200',
-    lineHeight: 22,
-    color: '#666',
   },
 });

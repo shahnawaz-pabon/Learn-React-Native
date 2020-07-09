@@ -13,6 +13,7 @@
     "faker": "^4.1.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
+    "react-native-autoheight-webview": "^1.5.1",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-modalize": "^2.0.4",
     "react-native-reanimated": "^1.9.0",
