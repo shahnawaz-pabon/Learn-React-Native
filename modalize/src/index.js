@@ -9,6 +9,12 @@ import faker from 'faker';
 export const App = () => {
   const modalizeRef = useRef(null);
 
+  const handleOpen = () => {
+    if (modalizeRef.current) {
+      modalizeRef.current.open();
+    }
+  };
+
   const handleClose = dest => {
     if (modalizeRef.current) {
       modalizeRef.current.close(dest);
@@ -64,6 +70,7 @@ export const App = () => {
       alwaysOpen={85}
       handlePosition="outside"
       handleStyle={{ backgroundColor: '#2c3e50' }}
+      modalTopOffset={100}
     >
       {renderContent()}
     </Modalize>
