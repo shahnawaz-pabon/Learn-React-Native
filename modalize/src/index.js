@@ -11,7 +11,7 @@ export const App = () => {
 
   const handleOpen = () => {
     if (modalizeRef.current) {
-      modalizeRef.current.open();
+      modalizeRef.current.open('top'); // 'default' || 'top'
     }
   };
 
